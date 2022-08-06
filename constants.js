@@ -27,7 +27,7 @@ export const MESSAGES = {
   Extension: "Select an extension (default: jsx)",
   Other: "Other files",
   WELCOME: "Generate component files",
-  ENDING: "Component files created",
+  ENDING: "Component files generated",
 };
 
 export const DEFAULTS = {
