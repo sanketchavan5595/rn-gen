@@ -3,10 +3,10 @@ import chalkAnimation from "chalk-animation";
 import inquirer from "inquirer";
 import fs from "node:fs";
 import {
-  DEFAULT_COMPONENT_NAME,
-  DEFAULT_EXTENSION,
+  DEFAULTS,
   EXTENSION_CHOICES,
   FILE_TYPE_CHOICES,
+  MESSAGES,
   USER_INPUT_TYPES,
 } from "./constants.js";
 import {
@@ -16,12 +16,12 @@ import {
   sleep,
 } from "./utils.js";
 
-let componentName = DEFAULT_COMPONENT_NAME;
-let extension = DEFAULT_EXTENSION;
+let componentName = DEFAULTS.ComponentName;
+let extension = DEFAULTS.Extension;
 let otherFileNames = [];
 
-const showTitleText = async () => {
-  const titleText = chalkAnimation.pulse("Generate a component");
+const showWelcomeMessage = async () => {
+  const titleText = chalkAnimation.pulse(MESSAGES.WELCOME);
   await sleep();
   titleText.stop();
 };
@@ -31,7 +31,7 @@ const getComponentName = async () => {
     name: "name",
     type: USER_INPUT_TYPES.INPUT,
     default: () => "Component",
-    message: "Enter component name",
+    message: MESSAGES.Component,
   });
   componentName = userInput.name;
 };
@@ -41,7 +41,7 @@ const getExtension = async () => {
     name: "extension",
     type: USER_INPUT_TYPES.LIST,
     choices: EXTENSION_CHOICES,
-    message: "Select an extension (default: jsx)",
+    message: MESSAGES.Extension,
   });
 
   extension = userInput.extension;
@@ -51,7 +51,7 @@ const getOtherChoices = async () => {
   const userInput = await inquirer.prompt({
     name: "other",
     type: USER_INPUT_TYPES.CHECKBOX,
-    message: "Other files: ",
+    message: MESSAGES.Other,
     choices: FILE_TYPE_CHOICES,
   });
   otherFileNames = userInput.other.map((item) =>
@@ -59,7 +59,7 @@ const getOtherChoices = async () => {
   );
 };
 
-await showTitleText();
+await showWelcomeMessage();
 await getComponentName();
 await getExtension();
 await getOtherChoices();
