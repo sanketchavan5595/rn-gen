@@ -1,6 +1,11 @@
 {
   "name": "reactg",
   "version": "1.0.0",
+  "description": "a CLI tool to generate react component and other files",
+  "author": {
+    "name": "sanketchavan5595",
+    "email": "sanketchavan5595@gmail.com"
+  },
   "main": "index.js",
   "license": "MIT",
   "type": "module",
@@ -12,5 +17,12 @@
     "chalk": "^5.0.1",
     "chalk-animation": "^2.0.2",
     "inquirer": "^9.1.0"
-  }
+  },
+  "keywords": [
+    "component",
+    "generator",
+    "CLI",
+    "react",
+    "nodejs"
+  ]
 }
